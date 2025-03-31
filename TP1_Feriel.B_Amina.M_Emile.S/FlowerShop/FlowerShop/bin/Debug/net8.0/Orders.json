@@ -1,0 +1,43 @@
+[
+  {
+    "OrderID": "31444",
+    "ClientID": "U004",
+    "AssignedSellerID": "U002",
+    "Total": 34.0,
+    "OrderDate": "2025-03-31T12:53:49.933182-04:00",
+    "Status": "En attente",
+    "Flowers": [
+      {
+        "Name": "Orchidée",
+        "Price": "6.8",
+        "Color": "Violet",
+        "Description": "Exotique et élégante"
+      },
+      {
+        "Name": "Orchidée",
+        "Price": "6.8",
+        "Color": "Violet",
+        "Description": "Exotique et élégante"
+      },
+      {
+        "Name": "Orchidée",
+        "Price": "6.8",
+        "Color": "Violet",
+        "Description": "Exotique et élégante"
+      },
+      {
+        "Name": "Orchidée",
+        "Price": "6.8",
+        "Color": "Violet",
+        "Description": "Exotique et élégante"
+      },
+      {
+        "Name": "Orchidée",
+        "Price": "6.8",
+        "Color": "Violet",
+        "Description": "Exotique et élégante"
+      }
+    ],
+    "Bouquets": []
+  }
+]

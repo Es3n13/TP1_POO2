@@ -1,0 +1,55 @@
+[
+  {
+    "Flowers": [
+      {
+        "Name": "Tulipe",
+        "Price": "2.5",
+        "Color": "Jaune",
+        "Description": "Printanière et élégante"
+      },
+      {
+        "Name": "Tulipe",
+        "Price": "2.5",
+        "Color": "Jaune",
+        "Description": "Printanière et élégante"
+      },
+      {
+        "Name": "Tulipe",
+        "Price": "2.5",
+        "Color": "Jaune",
+        "Description": "Printanière et élégante"
+      },
+      {
+        "Name": "Tulipe",
+        "Price": "2.5",
+        "Color": "Jaune",
+        "Description": "Printanière et élégante"
+      },
+      {
+        "Name": "Tulipe",
+        "Price": "2.5",
+        "Color": "Jaune",
+        "Description": "Printanière et élégante"
+      },
+      {
+        "Name": "Dahlia",
+        "Price": "4.4",
+        "Color": "Rouge",
+        "Description": "Fleurs aux formes variées"
+      },
+      {
+        "Name": "Dahlia",
+        "Price": "4.4",
+        "Color": "Rouge",
+        "Description": "Fleurs aux formes variées"
+      },
+      {
+        "Name": "Dahlia",
+        "Price": "4.4",
+        "Color": "Rouge",
+        "Description": "Fleurs aux formes variées"
+      }
+    ],
+    "Name": "Bouquet1"
+  }
+]

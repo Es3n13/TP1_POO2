@@ -1,0 +1,37 @@
+[
+  {
+    "Name": "Owner1",
+    "Email": "owner@1",
+    "ID": "U001",
+    "Role": "Owner"
+  },
+  {
+    "AssignedOrders": [],
+    "Name": "Mar",
+    "Email": "Marc@Dubé",
+    "ID": "U002",
+    "Role": "Seller"
+  },
+  {
+    "Orders": [],
+    "Name": "Fatou",
+    "Email": "Fatou@Ndiaye",
+    "ID": "U003",
+    "Role": "Client"
+  },
+  {
+    "Orders": [],
+    "Name": "Guy",
+    "Email": "Guy@Cyr",
+    "ID": "U004",
+    "Role": "Client"
+  },
+  {
+    "CompanyName": "BlowFlowers",
+    "AvailableFlowers": [],
+    "Name": "JOe",
+    "Email": "Joe@BlowFlowers",
+    "ID": "U005",
+    "Role": "Supplier"
+  }
+]
