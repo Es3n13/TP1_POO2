@@ -52,7 +52,6 @@ namespace FlowerShop.Data
             Console.Write("Nom du bouquet : ");
             string name = Console.ReadLine();
 
-            List<Flower> flowers = new List<Flower>();
             string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fleurs_db.csv");
             List<Flower> availableFlowers = FlowerManager.LoadFlowersFromCSV(csvPath);
 
@@ -62,13 +61,60 @@ namespace FlowerShop.Data
                 return;
             }
 
+            List<(Flower Flower, int Quantity)> flowers = new List<(Flower, int)>();
+            bool addingFlowers = true;
+
+            // Affichage les fleurs disponibles
+            Console.WriteLine("\nListe des fleurs disponibles :");
+            for (int i = 0; i < availableFlowers.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {availableFlowers[i].Name} ({availableFlowers[i].Color}) - ({availableFlowers[i].Description}) - {availableFlowers[i].Price:F2}");
+            }
+
+            //Boucle pour ajouter des fleurs au bouquet
+            while (addingFlowers)
+            {
+                Console.Write("\nSélectionner une fleur en entrant son numéro (ou 0 pour terminer) : ");
+                if (!int.TryParse(Console.ReadLine(), out int selection) || selection < 0 || selection > availableFlowers.Count)
+                {
+                    Console.WriteLine("Numéro invalide, essayez encore.");
+                    continue;
+                }
+
+                if (selection == 0)
+                {
+                    addingFlowers = false;
+                    break;
+                }
+
+                Flower selectedFlower = availableFlowers[selection - 1];
+
+                Console.Write($"Combien de {selectedFlower.Name} voulez-vous ajouter ? ");
+                if (!int.TryParse(Console.ReadLine(), out int quantity) || quantity <= 0)
+                {
+                    Console.WriteLine("Quantité invalide. Essayez encore.");
+                    continue;
+                }
+
+                flowers.Add((selectedFlower, quantity));
+                Console.WriteLine($"{quantity} x {selectedFlower.Name} ajoutée(s) au bouquet.");
+            }
+
             if (flowers.Count == 0)
             {
                 Console.WriteLine("Aucune fleur sélectionnée. Annulation de la création du bouquet.");
                 return;
             }
 
-            Bouquet newBouquet = new Bouquet(name) { Flowers = flowers };
+            // Créer le bouquet avec les fleurs sélectionnées et leurs quantités
+            Bouquet newBouquet = new Bouquet(name);
+            foreach (var (flower, quantity) in flowers)
+            {
+                for (int i = 0; i < quantity; i++)
+                {
+                    newBouquet.Flowers.Add(flower);
+                }
+            }
 
             AddBouquet(newBouquet);
             Console.WriteLine($"Bouquet '{name}' ajouté avec succès !");
@@ -87,7 +133,7 @@ namespace FlowerShop.Data
                 Console.WriteLine("Bouquets existants :");
                 foreach (var bouquet in bouquets)
                 {
-                    Console.WriteLine($"Nom : {bouquet.Name} - Prix : {bouquet.CalculatePrice()}");
+                    Console.WriteLine($"Nom : {bouquet.Name} - Prix : {bouquet.CalculatePrice()}0$");
                     Console.WriteLine("Fleurs dans le bouquet :");
                     foreach (var flower in bouquet.Flowers)
                     {

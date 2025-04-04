@@ -11,39 +11,72 @@ namespace FlowerShop.Data
 {
     public static class InvoiceManager
     {
+        //Chemin relatif vers le fichier de sauvegarde des factures
+        private static string invoicesPath = Path.Combine(Environment.CurrentDirectory, "Invoices.json");
         // Méthode pour générer une facture
-        public static void GenerateInvoice(Order order, List<Invoice> invoices, string InvoicesPath)
+        public static void GenerateInvoice(Order order, List<Invoice> invoices, string invoicesPath)
         {
-            if (order.Status == "Complétée") // Générer une facture seulement si la commande est complétée
+            try
             {
-                // Créer la facture
-                var invoice = new Invoice(order.OrderID, order.ClientID, order.CalculateTotal());
+                // Vérifier si la facture existe déjà pour éviter les doublons
+                if (invoices.Any(inv => inv.OrderID == order.OrderID))
+                {
+                    Console.WriteLine("Une facture existe déjà pour cette commande.");
+                    return;
+                }
 
-                // Ajouter la facture à la liste
-                invoices.Add(invoice);
+                // Construire la liste des articles achetés
+                List<InvoiceItem> invoiceItems = new List<InvoiceItem>();
 
-                // Sauvegarder les factures dans le fichier JSON
-                SaveInvoices(invoices, InvoicesPath);
+                // Ajouter les fleurs commandées
+                foreach (var flower in order.Flowers)
+                {
+                    float price = float.Parse(flower.Price);
+                    invoiceItems.Add(new InvoiceItem(flower.Name, price));
+                }
+
+                // Ajouter les bouquets commandés
+                foreach (var bouquet in order.Bouquets)
+                {
+                    float price = (float)bouquet.Price;
+                    invoiceItems.Add(new InvoiceItem(bouquet.Name, price));
+                }
+
+                // Créer une nouvelle facture avec les articles
+                Invoice newInvoice = new Invoice(order.OrderID, order.Client.ID, order.CalculateTotal(), invoiceItems);
+                invoices.Add(newInvoice);
+
+                // Sérialiser et sauvegarder
+                string json = JsonConvert.SerializeObject(invoices, Formatting.Indented);
+                File.WriteAllText(invoicesPath, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur lors de la sauvegarde de la facture : {ex.Message}");
             }
         }
 
         // Méthode pour charger les factures depuis un fichier JSON
-        public static List<Invoice> LoadInvoices(string path)
+        public static List<Invoice> LoadInvoices()
         {
-            if (File.Exists(path))
+            if (!File.Exists(invoicesPath))
             {
-                var json = File.ReadAllText(path);
+                Console.WriteLine("Le fichier Invoices.json n'existe pas. Création...");
+                File.WriteAllText(invoicesPath, "[]"); // Création d'un fichier JSON vide
+                return new List<Invoice>();
+            }
+
+            try
+            {
+                string json = File.ReadAllText(invoicesPath);
                 return JsonConvert.DeserializeObject<List<Invoice>>(json) ?? new List<Invoice>();
             }
-            return new List<Invoice>();
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur lors du chargement des factures : {ex.Message}");
+                return new List<Invoice>();
+            }
         }
 
-        // Méthode pour sauvegarder les factures dans un fichier JSON
-        public static void SaveInvoices(List<Invoice> invoices, string path)
-        {
-            var json = JsonConvert.SerializeObject(invoices, Formatting.Indented);
-            File.WriteAllText(path, json);
-            Console.WriteLine("Factures sauvegardées !");
-        }
     }
 }

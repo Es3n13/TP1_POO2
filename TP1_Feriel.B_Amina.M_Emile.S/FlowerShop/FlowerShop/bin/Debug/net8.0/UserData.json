@@ -3,35 +3,30 @@
     "Name": "Owner1",
     "Email": "owner@1",
     "ID": "U001",
-    "Role": "Owner"
+    "Role": "Owner",
+    "Password": "12345"
   },
   {
     "AssignedOrders": [],
-    "Name": "Mar",
+    "Name": "Marc",
     "Email": "Marc@Dubé",
     "ID": "U002",
-    "Role": "Seller"
+    "Role": "Seller",
+    "Password": "123"
   },
   {
-    "Orders": [],
-    "Name": "Fatou",
-    "Email": "Fatou@Ndiaye",
+    "Name": "Kim",
+    "Email": "Kim@Cyr",
     "ID": "U003",
-    "Role": "Client"
-  },
-  {
-    "Orders": [],
-    "Name": "Guy",
-    "Email": "Guy@Cyr",
-    "ID": "U004",
-    "Role": "Client"
+    "Role": "Client",
+    "Password": "123"
   },
   {
     "CompanyName": "BlowFlowers",
-    "AvailableFlowers": [],
-    "Name": "JOe",
-    "Email": "Joe@BlowFlowers",
-    "ID": "U005",
-    "Role": "Supplier"
+    "Name": "Joe",
+    "Email": "Joe@Blow",
+    "ID": "U004",
+    "Role": "Supplier",
+    "Password": "123"
   }
 ]

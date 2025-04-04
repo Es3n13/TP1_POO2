@@ -1,0 +1,182 @@
+<Project>
+  <Name>TP1_POO2</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.ClassDiagram" assembly="NClass.DiagramEditor, Version=2.8.0.2, Culture=neutral, PublicKeyToken=null">
+    <Name>Diagramme de Classe_Boutique de fleurs</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Users</Name>
+        <Access>Public</Access>
+        <Location left="1112" top="54" />
+        <Size width="177" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string Name</Member>
+        <Member type="Field">private string Email</Member>
+        <Member type="Field">private string ID</Member>
+        <Member type="Field">private string Role</Member>
+        <Member type="Field">private string Password</Member>
+        <Member type="Method">private static string GenerateUniqueID()</Member>
+        <Member type="Method">public abstract void AfficherRole()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Staff</Name>
+        <Access>Public</Access>
+        <Location left="318" top="395" />
+        <Size width="162" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void CreateBouquet()</Member>
+        <Member type="Method">public static void DisplayBouquet()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Supplier</Name>
+        <Access>Public</Access>
+        <Location left="1575" top="394" />
+        <Size width="374" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string CompanyName</Member>
+        <Member type="Method">public void DisplayAvailableFlowers()</Member>
+        <Member type="Method">public void DisplaySotck(Inventory inventory)</Member>
+        <Member type="Method">public void AddStock(Inventory inventory, List&lt;Flower&gt; availableFlowers)</Member>
+        <Member type="Method">public void AfficherMenu(Inventory inventory)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Client</Name>
+        <Access>Public</Access>
+        <Location left="1040" top="394" />
+        <Size width="331" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void CreateBouquet()</Member>
+        <Member type="Method">public static void DisplayBouquets()</Member>
+        <Member type="Method">public void PlaceOrder()</Member>
+        <Member type="Method">public void ViewOrders(Client currentClient, List&lt;Client&gt; clients)</Member>
+        <Member type="Method">public void PayForOrder(Client currentClient)</Member>
+        <Member type="Method">public void DisplayClientInvoices(Client client, string invoices)</Member>
+        <Member type="Method">public void AfficherMenu()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Sellers</Name>
+        <Access>Public</Access>
+        <Location left="778" top="608" />
+        <Size width="190" height="113" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void ProcessOrder()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Owners</Name>
+        <Access>Public</Access>
+        <Location left="101" top="608" />
+        <Size width="613" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void ManageUsers()</Member>
+        <Member type="Method">public Seller AddSellert(List&lt;Seller&gt; sellers, string name, string email, string password)</Member>
+        <Member type="Method">public Client AddClient(List&lt;Client&gt; clients, string name, string email, string password)</Member>
+        <Member type="Method">public Owner AddOwner(List&lt;Owner&gt; Owners, string name, string email, string password)</Member>
+        <Member type="Method">public Seller AddSellert(List&lt;Seller&gt; sellers, string name, string email, string password)</Member>
+        <Member type="Method">public Supplier AddSupplier(List&lt;Supplier&gt; suppliers, string name, string email, string password, string companyname)</Member>
+        <Member type="Method">public void RemoveUser(string id)</Member>
+        <Member type="Method">public void DisplayAllOrders(List&lt;Order&gt; orders)</Member>
+        <Member type="Method">public void DisplayAllInvoices(List&lt;Invoice&gt; invoices)</Member>
+        <Member type="Method">public void AfficherMenu()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Inventory</Name>
+        <Access>Public</Access>
+        <Location left="2030" top="656" />
+        <Size width="294" height="148" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Dictionary &lt;string, int&gt; stock</Member>
+        <Member type="Method">public void AddStock(string flowerName, int quantity)</Member>
+        <Member type="Method">public void RemoveStock(string flowerName, int quantity)</Member>
+        <Member type="Method">public void DisplayStock()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Order</Name>
+        <Access>Public</Access>
+        <Location left="1628" top="849" />
+        <Size width="277" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">internal string OrderID</Member>
+        <Member type="Field">private Client client</Member>
+        <Member type="Field">private Seller AssignedSeller</Member>
+        <Member type="Field">private List&lt;Flower&gt; Flowers</Member>
+        <Member type="Field">private List&lt;Bouquet&gt; Bouquets</Member>
+        <Member type="Field">internal string Status</Member>
+        <Member type="Field">internal DateTime OrderDate</Member>
+        <Member type="Field">private Invoice Invoice</Member>
+        <Member type="Method">public void DisplayOrder()</Member>
+        <Member type="Method">public static void AddOrder(Order order, string OrdersPath)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Bouquet</Name>
+        <Access>Public</Access>
+        <Location left="640" top="1091" />
+        <Size width="162" height="180" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public List&lt;Flower&gt; Flowers</Member>
+        <Member type="Field">private string Name</Member>
+        <Member type="Field">private decimal LaborFee</Member>
+        <Member type="Field">private decimal CardFee</Member>
+        <Member type="Field">public decimal Price</Member>
+        <Member type="Method">public decimal CalculatePrice()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Flower</Name>
+        <Access>Public</Access>
+        <Location left="320" top="1091" />
+        <Size width="162" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public string Name</Member>
+        <Member type="Field">public string Price</Member>
+        <Member type="Field">public string Color</Member>
+        <Member type="Field">public string Description</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Invoice</Name>
+        <Access>Public</Access>
+        <Location left="1158" top="849" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string InvoiceID</Member>
+        <Member type="Field">private string OrderID</Member>
+        <Member type="Field">private string ClientID</Member>
+        <Member type="Field">private decimal TotalAmount</Member>
+        <Member type="Field">private DateTime IssueDate</Member>
+        <Member type="Field">private List&lt;InvoiceItems&gt; Items</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Containers />
+    <Relationships>
+      <Relationship type="Generalization" first="3" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

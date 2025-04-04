@@ -50,6 +50,85 @@
         "Description": "Fleurs aux formes variées"
       }
     ],
-    "Name": "Bouquet1"
+    "Name": "Bouquet1",
+    "Price": 28.7
+  },
+  {
+    "Flowers": [
+      {
+        "Name": null,
+        "Price": "3.4",
+        "Color": "Rouge",
+        "Description": "Parfumée et symbolise l'amour"
+      },
+      {
+        "Name": null,
+        "Price": "3.4",
+        "Color": "Rouge",
+        "Description": "Parfumée et symbolise l'amour"
+      }
+    ],
+    "Name": "Bouquet2",
+    "Price": 9.8
+  },
+  {
+    "Flowers": [
+      {
+        "Name": "Glaïeul",
+        "Price": "3.6",
+        "Color": "Rose",
+        "Description": "Fleurs en épi"
+      },
+      {
+        "Name": "Glaïeul",
+        "Price": "3.6",
+        "Color": "Rose",
+        "Description": "Fleurs en épi"
+      },
+      {
+        "Name": "Glaïeul",
+        "Price": "3.6",
+        "Color": "Rose",
+        "Description": "Fleurs en épi"
+      },
+      {
+        "Name": "Glaïeul",
+        "Price": "3.6",
+        "Color": "Rose",
+        "Description": "Fleurs en épi"
+      },
+      {
+        "Name": "Violette",
+        "Price": "2.0",
+        "Color": "Violet",
+        "Description": "Petite fleur parfumée"
+      },
+      {
+        "Name": "Violette",
+        "Price": "2.0",
+        "Color": "Violet",
+        "Description": "Petite fleur parfumée"
+      },
+      {
+        "Name": "Violette",
+        "Price": "2.0",
+        "Color": "Violet",
+        "Description": "Petite fleur parfumée"
+      },
+      {
+        "Name": "Violette",
+        "Price": "2.0",
+        "Color": "Violet",
+        "Description": "Petite fleur parfumée"
+      },
+      {
+        "Name": "Violette",
+        "Price": "2.0",
+        "Color": "Violet",
+        "Description": "Petite fleur parfumée"
+      }
+    ],
+    "Name": "Bouquet3",
+    "Price": 27.4
   }
 ]

@@ -17,3 +17,22 @@ C:\Users\Utilisateur\source\repos\FlowerShop\FlowerShop\obj\Debug\net8.0\refint\
 C:\Users\Utilisateur\source\repos\FlowerShop\FlowerShop\obj\Debug\net8.0\FlowerShop.pdb
 C:\Users\Utilisateur\source\repos\FlowerShop\FlowerShop\obj\Debug\net8.0\FlowerShop.genruntimeconfig.cache
 C:\Users\Utilisateur\source\repos\FlowerShop\FlowerShop\obj\Debug\net8.0\ref\FlowerShop.dll
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\bin\Debug\net8.0\FlowerShop.exe
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\bin\Debug\net8.0\FlowerShop.deps.json
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\bin\Debug\net8.0\FlowerShop.runtimeconfig.json
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\bin\Debug\net8.0\FlowerShop.dll
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\bin\Debug\net8.0\FlowerShop.pdb
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\bin\Debug\net8.0\CsvHelper.dll
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\bin\Debug\net8.0\Json.Net.dll
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\obj\Debug\net8.0\FlowerShop.csproj.AssemblyReference.cache
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\obj\Debug\net8.0\FlowerShop.GeneratedMSBuildEditorConfig.editorconfig
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\obj\Debug\net8.0\FlowerShop.AssemblyInfoInputs.cache
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\obj\Debug\net8.0\FlowerShop.AssemblyInfo.cs
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\obj\Debug\net8.0\FlowerShop.csproj.CoreCompileInputs.cache
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\obj\Debug\net8.0\FlowerShop.csproj.Up2Date
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\obj\Debug\net8.0\FlowerShop.dll
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\obj\Debug\net8.0\refint\FlowerShop.dll
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\obj\Debug\net8.0\FlowerShop.pdb
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\obj\Debug\net8.0\FlowerShop.genruntimeconfig.cache
+D:\UQAR\Hiver 2025\POO2\TP1_Feriel.B_Amina.M_Emile.S\FlowerShop\FlowerShop\obj\Debug\net8.0\ref\FlowerShop.dll

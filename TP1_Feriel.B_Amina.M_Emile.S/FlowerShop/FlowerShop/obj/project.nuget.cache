@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9lGJsFeYuLg=",
+  "dgSpecHash": "36u1upnPieY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Utilisateur\\source\\repos\\FlowerShop\\FlowerShop\\FlowerShop.csproj",
+  "projectFilePath": "D:\\UQAR\\Hiver 2025\\POO2\\TP1_Feriel.B_Amina.M_Emile.S\\FlowerShop\\FlowerShop\\FlowerShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Utilisateur\\.nuget\\packages\\csvhelper\\33.0.1\\csvhelper.33.0.1.nupkg.sha512",
     "C:\\Users\\Utilisateur\\.nuget\\packages\\json.net\\1.0.33\\json.net.1.0.33.nupkg.sha512",

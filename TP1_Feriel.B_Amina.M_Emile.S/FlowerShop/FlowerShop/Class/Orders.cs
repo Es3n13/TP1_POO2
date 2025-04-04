@@ -11,14 +11,14 @@ namespace FlowerShop.Class
     // Commande
     public class Order
     {
-        public string OrderID { get; set; }
-        public Client Client { get; set; }  // Référence à l'objet Client
-        public Seller AssignedSeller { get; set; }  // Référence à l'objet Seller
-        public List<Flower> Flowers { get; set; } = new List<Flower>();
-        public List<Bouquet> Bouquets { get; set; } = new List<Bouquet>();
-        public string Status { get; set; } // En attente, En cours, Complétée, Annulée
-        public DateTime OrderDate { get; set; }
-        public Invoice Invoice { get; set; } // Facture associée à la commande
+        public string OrderID { get; internal set; }
+        public Client Client { get; private set; }  // Référence à l'objet Client
+        public Seller AssignedSeller { get; private set; }  // Référence à l'objet Seller
+        public List<Flower> Flowers { get; private set; } = new List<Flower>();
+        public List<Bouquet> Bouquets { get; private set; } = new List<Bouquet>();
+        public string Status { get; internal set; } // En attente, Complétée, Payée, Annulée
+        public DateTime OrderDate { get; internal set; }
+        public Invoice Invoice { get; private set; } // Facture associée à la commande
 
         public Order(Client client, List<Flower> flowers, List<Bouquet> bouquets, Seller seller)
         {
@@ -36,16 +36,6 @@ namespace FlowerShop.Class
 
         // Récupérer l'ID du vendeur
         public string AssignedSellerID => AssignedSeller.ID;
-
-        private Seller AssignSeller(List<Seller> sellers)
-        {
-            if (sellers == null || !sellers.Any())
-            {
-                Console.WriteLine("Aucun vendeur disponible pour être assigné !");
-                return null;  // Évite un plantage
-            }
-            return sellers.OrderBy(s => s.AssignedOrders.Count).FirstOrDefault();  // Assigne au vendeur avec le moins de commandes
-        }
 
         public void UpdateStatus(string newStatus)
         {
@@ -69,7 +59,7 @@ namespace FlowerShop.Class
 
         public void DisplayOrder()
         {
-            Console.WriteLine($"Commande ID : {OrderID}");
+            Console.WriteLine($"-----Commande ID : {OrderID}-----");
             Console.WriteLine($"Client : {Client.Name} (ID: {ClientID})");
             Console.WriteLine($"Vendeur ID : {AssignedSellerID}"); 
             Console.WriteLine($"Statut : {Status}");
@@ -77,16 +67,17 @@ namespace FlowerShop.Class
             Console.WriteLine("Fleurs commandées :");
             foreach (var flower in Flowers)
             {
-                Console.WriteLine($"- {flower.Name} ({flower.Price:F2}$)");
+                Console.WriteLine($"- {flower.Name} ({flower.Price}0$)");
             }
 
             Console.WriteLine("Bouquets commandés :");
             foreach (var bouquet in Bouquets)
             {
-                Console.WriteLine($"- {bouquet.Name} ({bouquet.Price:F2}$)");
+                Console.WriteLine($"- {bouquet.Name} : {bouquet.Price}0$ (Inclut des frais de 2$ pour la main d'oeuvre et 1$ pour la carte personnalisée");
             }
 
-            Console.WriteLine($"Total : {CalculateTotal()}$");
+            Console.WriteLine($"Total : {CalculateTotal()}0$");
+            Console.WriteLine("----------------------------------");
         }        
     }
 }

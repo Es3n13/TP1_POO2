@@ -15,13 +15,6 @@ namespace FlowerShop.Data
         //Chemin vers le fihcier UserDate.JSON
         private static string UserDataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "UserData.json");
 
-       /* public static void SaveUser(List<Users> users)
-        {
-            string json = JsonConvert.SerializeObject(users, Formatting.Indented);
-            File.WriteAllText(UserDataPath, json);
-            Console.WriteLine("Données sauvegardées !");
-        }*/
-
         //Sauvegarde des utilisateurs dans un fichier JSON
         public static void SaveUser(List<Users> newUsers)
          {
@@ -49,19 +42,17 @@ namespace FlowerShop.Data
                 // Vérifier si le fichier JSON existe
                 if (!File.Exists(UserDataPath))
                 {
-                    Console.WriteLine("Le fichier UserData.json n'existe pas, création avec un utilisateur par défaut...");
 
                     // Créer un utilisateur Owner par défaut
                     List<Users> defaultUsers = new List<Users>
                     {
-                        new Owner("Owner1", "owner@1", "U001")
+                        new Owner("Owner1", "owner@1", "U001","12345")
                     };
 
                     // Sauvegarder cet utilisateur dans un fichier JSON
                     string defaultJson = JsonConvert.SerializeObject(defaultUsers, Formatting.Indented);
                     File.WriteAllText(UserDataPath, defaultJson);
 
-                    Console.WriteLine("Fichier UserData.json créé avec un utilisateur par défaut.");
                     return defaultUsers;
                 }
 
@@ -70,19 +61,9 @@ namespace FlowerShop.Data
 
                 // Désérialiser en utilisant le JsonConverter si nécessaire
                 var settings = new JsonSerializerSettings();
-                settings.Converters.Add(new UserJsonConverter()); // Utilisation d'un convertisseur personnalisé si nécessaire
+                settings.Converters.Add(new UserJsonConverter()); // Utilisation d'un convertisseur personnalisé
 
                 List<Users> users = JsonConvert.DeserializeObject<List<Users>>(json, settings);
-
-                /*S'assurer que les utilisateurs sont correctement chargés
-                if (users != null)
-                {
-                    Console.WriteLine($"Utilisateurs chargés : {users.Count}");
-                    foreach (var user in users)
-                    {
-                        Console.WriteLine($"Utilisateur chargé : {user.Name}, ID: {user.ID}, Role: {user.Role}");
-                    }
-                }*/
 
                 return users ?? new List<Users>(); // Retourne une liste vide si la désérialisation échoue
             }
@@ -95,36 +76,27 @@ namespace FlowerShop.Data
 
 
         //Authentification des utilisateurs
-        public static Users? AuthentifyUser(string userId)
+        public static Users? AuthentifyUser(string userId, string password)
         {
             var users = LoadUsers();
-
-            Console.WriteLine($"Recherche de l'utilisateur avec ID : {userId}");
-
-            /*foreach (var user in users)
-            {
-                Console.WriteLine($"Comparaison avec : {user.Name}, ID: {user.ID}, Role: {user.GetType().Name}");
-            }*/
-
             var foundUser = users.Find(u => u.ID == userId);
 
-            if (foundUser != null)
+            if (foundUser != null && foundUser.Password == password)
             {
-                Console.WriteLine($"Utilisateur trouvé : {foundUser.Name}, ID: {foundUser.ID}, Role: {foundUser.GetType().Name}");
+                Console.WriteLine($"Authentification réussie !");
+                return foundUser;
             }
             else
             {
-                Console.WriteLine("Utilisateur introuvable !");
+                Console.WriteLine("Échec de l'authentification. Vérifiez votre ID et votre mot de passe.");
+                return null;
             }
-
-            return foundUser;
         }
-
         // Filtrer les utilisateurs par rôle
         public static List<Seller> GetSellers(List<Users> users)
         {
             return users.Where(u => u.Role == "Seller")
-                        .Select(u => new Seller(u.Name, u.Email, u.ID))
+                        .Select(u => new Seller(u.Name, u.Email, u.ID, u.Password))
                         .ToList();
         }
 

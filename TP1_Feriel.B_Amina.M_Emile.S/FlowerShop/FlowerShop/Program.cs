@@ -51,14 +51,17 @@ namespace FlowerShop
         {
             Console.Clear();
             Console.WriteLine("=== Connexion ===");
-            Console.Write("Entrez votre ID utilisateur (ou 0 pour revenir) : ");
+            Console.WriteLine("Entrez votre ID utilisateur (ou 0 pour revenir) : ");
             string userId = Console.ReadLine();
 
             if (userId == "0")
                 return;
+            Console.WriteLine("Entrez votre mot de passe :");
+            string userPassword = Console.ReadLine();
 
-            // Authentifier l'utilisateur avec son ID
-            Users user = UserManager.AuthentifyUser(userId);
+
+            // Authentifier l'utilisateur avec son ID et mot de passe
+            Users user = UserManager.AuthentifyUser(userId, userPassword);
 
             if (user != null)
             {
@@ -69,12 +72,28 @@ namespace FlowerShop
                 // Rediriger vers le bon menu en fonction du rôle
                 if (user is Owner owner)
                 {
+                    //Charge toutes les listes d'utilisateurs
                     List<Users> allUsers = UserManager.LoadUsers();
                     List<Seller> sellers = UserManager.GetSellers(allUsers);
                     List<Client> clients = UserManager.GetClients(allUsers);
                     List<Owner> owners = UserManager.GetOwners(allUsers);
                     List<Supplier> suppliers = UserManager.GetSuppliers(allUsers);
-                    owner.AfficherMenu(sellers, clients, owners, suppliers);
+
+                    //Charge la liste des commandes
+                    string OrdersPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Orders.json");
+                    List<Order> orders = OrderManager.LoadOrder(OrdersPath, clients, sellers);
+
+                    //Charger la liste des factures
+                    string InvoicesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Invoices.json");
+                    List<Invoice> invoices = InvoiceManager.LoadInvoices();
+
+                    //Charger la liste d'inventaire
+                    string CsvPath = Path.Combine(Environment.CurrentDirectory, "fleurs_db.csv");
+                    List<Flower> availableFlowers = FlowerManager.LoadFlowersFromCSV(CsvPath);
+                    Inventory inventory = InventoryManager.LoadInventory(availableFlowers);
+
+                    //Affiche le menu propriétaire
+                    owner.AfficherMenu(inventory,sellers, clients, owners, suppliers, orders, invoices);
                 }
                 else if (user is Seller seller)
                 {
@@ -87,7 +106,15 @@ namespace FlowerShop
                 }
                 else if (user is Supplier supplier)
                 {
-                    supplier.AfficherMenu();
+                    // Charge la liste des fleurs disponibles
+                    string CsvPath = Path.Combine(Environment.CurrentDirectory, "fleurs_db.csv");
+                    List<Flower> availableFlowers = FlowerManager.LoadFlowersFromCSV(CsvPath);
+
+                    // Charge l'inventaire
+                    Inventory inventory = InventoryManager.LoadInventory(availableFlowers);
+
+                    // Affiche le menu fournisseur
+                    supplier.AfficherMenu(inventory);
                 }
                 else
                 {
@@ -96,6 +123,7 @@ namespace FlowerShop
                 }
             }
         }
+
         static void CreerCompteClient()
         {
             Console.Clear();
@@ -104,11 +132,13 @@ namespace FlowerShop
             string nom = Console.ReadLine();
             Console.Write("Email : ");
             string email = Console.ReadLine();
+            Console.Write("Mot de passe : ");
+            string password = Console.ReadLine();
 
-            // Création du client
-            Client newClient = new Client(nom, email);
+            // Création du client avec mot de passe
+            Client newClient = new Client(nom, email, null, password);
 
-            // Chargement des utilisateurs et des clients existants
+            // Chargement des utilisateurs existants
             List<Users> users = UserManager.LoadUsers();
 
             // Ajout du nouveau client

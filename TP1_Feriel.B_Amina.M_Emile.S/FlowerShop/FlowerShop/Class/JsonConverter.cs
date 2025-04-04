@@ -18,21 +18,15 @@ namespace FlowerShop.Class
             string name = jo["Name"].ToString();
             string email = jo["Email"].ToString();
             string id = jo["ID"].ToString();
+            string password = jo["Password"].ToString();
             string role = jo["Role"].ToString();
 
             Users user = role switch
             {
-                "Client" => new Client(name, email, id),
-                "Seller" => new Seller(name, email, id),
-                "Owner" => new Owner(name, email, id),
-                "Supplier" => new Supplier(
-                    name,
-                    email,
-                    jo["CompanyName"].ToString(),
-                    id)
-                {
-                    AvailableFlowers = jo["AvailableFlowers"]?.ToObject<List<Flower>>() ?? new List<Flower>()
-                },
+                "Client" => new Client(name, email, id, password),
+                "Seller" => new Seller(name, email, id, password),
+                "Owner" => new Owner(name, email, id, password),
+                "Supplier" => new Supplier(name, email, id, password, jo["CompanyName"].ToString()),
                 _ => throw new InvalidOperationException("Rôle inconnu")
             };
 
@@ -50,13 +44,13 @@ namespace FlowerShop.Class
             writer.WriteValue(value.ID);
             writer.WritePropertyName("Role");
             writer.WriteValue(value.Role);
+            writer.WritePropertyName("Password");
+            writer.WriteValue(value.Password);
 
             if (value is Supplier supplier)
             {
                 writer.WritePropertyName("CompanyName");
                 writer.WriteValue(supplier.CompanyName);
-                writer.WritePropertyName("AvailableFlowers");
-                serializer.Serialize(writer, supplier.AvailableFlowers);
             }
 
             writer.WriteEndObject();
