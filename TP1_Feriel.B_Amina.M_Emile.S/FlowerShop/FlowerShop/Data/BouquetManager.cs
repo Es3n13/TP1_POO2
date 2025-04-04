@@ -12,7 +12,7 @@ namespace FlowerShop.Data
     public static class BouquetManager
     {
         //Chemin relatif vers les donneés des bouquets
-        private static string BouquetDataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "BouquetData.json");
+        private static string BouquetDataPath = Path.Combine(Environment.CurrentDirectory, "BouquetData.json");
 
         //Vérification que le fichier existe
         private static void EnsureFileExists()
@@ -47,12 +47,12 @@ namespace FlowerShop.Data
         }
 
         //Créer un bouquet
-        public static void CreateBouquet()
+       /* public static void CreateBouquet()
         {
             Console.Write("Nom du bouquet : ");
             string name = Console.ReadLine();
 
-            string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fleurs_db.csv");
+            string csvPath = Path.Combine(Environment.CurrentDirectory, "fleurs_db.csv");
             List<Flower> availableFlowers = FlowerManager.LoadFlowersFromCSV(csvPath);
 
             if (availableFlowers.Count == 0)
@@ -118,10 +118,10 @@ namespace FlowerShop.Data
 
             AddBouquet(newBouquet);
             Console.WriteLine($"Bouquet '{name}' ajouté avec succès !");
-        }
+        }*/
 
         //Afficher les bouquets existants
-        public static void DisplayBouquets()
+       /* public static void DisplayBouquets()
         {
             List<Bouquet> bouquets = LoadBouquets();
             if (bouquets.Count == 0)
@@ -142,6 +142,6 @@ namespace FlowerShop.Data
                     Console.WriteLine();
                 }
             }
-        }
+        }*/
     }
 }

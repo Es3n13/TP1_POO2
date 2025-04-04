@@ -69,7 +69,7 @@ namespace FlowerShop.Class
             string name = Console.ReadLine();
 
             //Charge la liste de fleurs
-            string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fleurs_db.csv");
+            string csvPath = Path.Combine(Environment.CurrentDirectory, "fleurs_db.csv");
             List<Flower> availableFlowers = FlowerManager.LoadFlowersFromCSV(csvPath);
 
             if (availableFlowers.Count == 0)
@@ -183,7 +183,7 @@ namespace FlowerShop.Class
         public void DisplayAvailableFlowers()
         {
 
-            string CsvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fleurs_db.csv");
+            string CsvPath = Path.Combine(Environment.CurrentDirectory, "fleurs_db.csv");
             List<Flower> availableFlowers = FlowerManager.LoadFlowersFromCSV(CsvPath);
 
             if (availableFlowers != null && availableFlowers.Count > 0)
@@ -308,7 +308,7 @@ namespace FlowerShop.Class
             string name = Console.ReadLine();
 
             //Charge la liste de fleurs
-            string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fleurs_db.csv");
+            string csvPath = Path.Combine(Environment.CurrentDirectory, "fleurs_db.csv");
             List<Flower> availableFlowers = FlowerManager.LoadFlowersFromCSV(csvPath);
 
             if (availableFlowers.Count == 0)
@@ -405,7 +405,7 @@ namespace FlowerShop.Class
             List<Bouquet> selectedBouquets = new List<Bouquet>();
 
             // Charger les fleurs disponibles
-            string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fleurs_db.csv");
+            string csvPath = Path.Combine(Environment.CurrentDirectory, "fleurs_db.csv");
             List<Flower> availableFlowers = FlowerManager.LoadFlowersFromCSV(csvPath);
 
             // Charger les bouquets disponibles
@@ -538,7 +538,7 @@ namespace FlowerShop.Class
         //Fonction pour que le client puisse voir ses commandes et les annuler si possible
         public void ViewOrders(Client currentClient, List<Client> clients, List<Seller> sellers)
         {
-            string ordersPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Orders.json");
+            string ordersPath = Path.Combine(Environment.CurrentDirectory, "Orders.json");
 
             // Charger les commandes existantes
             List<Order> orders = OrderManager.LoadOrder(ordersPath, clients, sellers);
@@ -632,8 +632,8 @@ namespace FlowerShop.Class
 
         public void PayForOrder(Client currentClient)
         {
-            string ordersPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Orders.json");
-            string invoicesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Invoices.json");
+            string ordersPath = Path.Combine(Environment.CurrentDirectory, "Orders.json");
+            string invoicesPath = Path.Combine(Environment.CurrentDirectory, "Invoices.json");
 
             List<Users> users = UserManager.LoadUsers();
             List<Client> clients = UserManager.GetClients(users);
@@ -753,7 +753,7 @@ namespace FlowerShop.Class
                         DisplayBouquets();
                         break;
                     case "3":
-                        PlaceOrder(sellers, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Orders.json"));
+                        PlaceOrder(sellers, Path.Combine(Environment.CurrentDirectory, "Orders.json"));
                         break;
                     case "4":
                         ViewOrders(this, UserManager.GetClients(UserManager.LoadUsers()), UserManager.GetSellers(UserManager.LoadUsers()));
@@ -762,7 +762,7 @@ namespace FlowerShop.Class
                         PayForOrder(this);
                         break;
                     case "6":
-                        DisplayClientInvoices(this, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Invoices.json"));
+                        DisplayClientInvoices(this, Path.Combine(Environment.CurrentDirectory, "Invoices.json"));
                         break;
                     case "0":
                         activeMenu = false;
@@ -810,8 +810,8 @@ namespace FlowerShop.Class
         //Fonction pour traiter une commande
         public void ProcessOrder()
         {
-            string ordersPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Orders.json");
-            string inventoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Inventory.json");
+            string ordersPath = Path.Combine(Environment.CurrentDirectory, "Orders.json");
+            string inventoryPath = Path.Combine(Environment.CurrentDirectory, "Inventory.json");
             string CsvPath = Path.Combine(Environment.CurrentDirectory, "fleurs_db.csv");
 
             // Charger les utilisateurs pour récupérer les clients et les vendeurs
@@ -1089,7 +1089,7 @@ namespace FlowerShop.Class
         //Pour retirer un utilsateur
         public static void RemoveUser(string id)
         {
-            string UserDataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "UserData.json");
+            string UserDataPath = Path.Combine(Environment.CurrentDirectory, "UserData.json");
 
             List<Users> users = UserManager.LoadUsers();
 
@@ -1309,7 +1309,7 @@ namespace FlowerShop.Class
                             }
 
                             // Sauvegarder les changements dans les commandes
-                            string ordersPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Orders.json");
+                            string ordersPath = Path.Combine(Environment.CurrentDirectory, "Orders.json");
                             OrderManager.SaveOrder(orders, ordersPath);
 
                             Console.WriteLine("Le statut de la commande a été mis à jour.");

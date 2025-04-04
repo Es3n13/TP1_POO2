@@ -13,7 +13,7 @@ namespace FlowerShop.Data
     public class UserManager
     {
         //Chemin vers le fihcier UserDate.JSON
-        private static string UserDataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "UserData.json");
+        private static string UserDataPath = Path.Combine(Environment.CurrentDirectory, "UserData.json");
 
         //Sauvegarde des utilisateurs dans un fichier JSON
         public static void SaveUser(List<Users> newUsers)

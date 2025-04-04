@@ -1,18 +1,26 @@
 [
   {
-    "InvoiceID": "d13e5",
+    "InvoiceID": "e389c",
     "OrderID": "cb052",
     "ClientID": "U003",
     "TotalAmount": 40.8,
-    "IssueDate": "2025-04-02T17:56:44.3461517-04:00",
+    "IssueDate": "2025-04-03T21:55:08.7312233-04:00",
     "Items": []
   },
   {
-    "InvoiceID": "cff19",
+    "InvoiceID": "faf3a",
     "OrderID": "8f3a1",
     "ClientID": "U003",
     "TotalAmount": 35.0,
-    "IssueDate": "2025-04-03T21:00:42.932774-04:00",
+    "IssueDate": "2025-04-03T21:55:08.7315387-04:00",
+    "Items": []
+  },
+  {
+    "InvoiceID": "af434",
+    "OrderID": "2e85e",
+    "ClientID": "U003",
+    "TotalAmount": 16.5,
+    "IssueDate": "2025-04-03T21:55:21.0382054-04:00",
     "Items": []
   }
 ]

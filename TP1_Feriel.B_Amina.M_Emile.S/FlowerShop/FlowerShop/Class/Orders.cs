@@ -18,7 +18,7 @@ namespace FlowerShop.Class
         public List<Bouquet> Bouquets { get; private set; } = new List<Bouquet>();
         public string Status { get; internal set; } // En attente, Complétée, Payée, Annulée
         public DateTime OrderDate { get; internal set; }
-        public Invoice Invoice { get; private set; } // Facture associée à la commande
+        //public Invoice Invoice { get; private set; } // Facture associée à la commande
 
         public Order(Client client, List<Flower> flowers, List<Bouquet> bouquets, Seller seller)
         {

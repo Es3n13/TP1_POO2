@@ -12,8 +12,8 @@ namespace FlowerShop
             while (applicationRunning)
             {
                 // Chargement des données
-                string CsvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fleurs_db.csv");
-                string OrdersPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Orders.json");
+                string CsvPath = Path.Combine(Environment.CurrentDirectory, "fleurs_db.csv");
+                string OrdersPath = Path.Combine(Environment.CurrentDirectory, "Orders.json");
 
                 var flowers = FlowerManager.LoadFlowersFromCSV(CsvPath);
                 List<Users> users = UserManager.LoadUsers();
@@ -80,11 +80,11 @@ namespace FlowerShop
                     List<Supplier> suppliers = UserManager.GetSuppliers(allUsers);
 
                     //Charge la liste des commandes
-                    string OrdersPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Orders.json");
+                    string OrdersPath = Path.Combine(Environment.CurrentDirectory, "Orders.json");
                     List<Order> orders = OrderManager.LoadOrder(OrdersPath, clients, sellers);
 
                     //Charger la liste des factures
-                    string InvoicesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Invoices.json");
+                    string InvoicesPath = Path.Combine(Environment.CurrentDirectory, "Invoices.json");
                     List<Invoice> invoices = InvoiceManager.LoadInvoices();
 
                     //Charger la liste d'inventaire
